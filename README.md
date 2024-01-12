@@ -1,4 +1,4 @@
-# epsi_shop
+# Nolwenn Bourey
 
 An IT shop for EPSI students
 
