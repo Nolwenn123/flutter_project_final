@@ -1,10 +1,11 @@
+import 'package:epsi_shop/page/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../bo/cart.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +16,29 @@ class CartPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        //Si j'ai plus de 0 éléments dans le panier j'affiche la liste
-        //des éléments dans le panier
-        //Sinon j'affiche le Widget EmptyCart qui affiche "Votre Panier est vide"
         child: context.watch<Cart>().items.isNotEmpty
             ? const ListCart()
             : const EmptyCart(),
       ),
+      floatingActionButton: context.watch<Cart>().items.isNotEmpty
+          ? FloatingActionButton.extended(
+        onPressed: () {
+          // Ajoutez ici le code pour naviguer vers la page de paiement
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PaymentPage()),
+          );
+        },
+        label: const Text('Procéder au paiement'),
+        icon: const Icon(Icons.payment),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+      )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
+
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({

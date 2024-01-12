@@ -4,6 +4,8 @@ import 'package:epsi_shop/page/cart_page.dart';
 import 'package:epsi_shop/page/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:epsi_shop/page/payment_page.dart';
+
 
 import 'page/home_page.dart';
 
@@ -19,6 +21,10 @@ final _router = GoRouter(routes: [
     GoRoute(
       path: 'about-us',
       builder: (_, __) => AboutUsPage(),
+    ),
+    GoRoute(
+      path: 'payment',
+      builder: (_, __) => PaymentPage(),
     ),
     GoRoute(
         path: 'detail',
